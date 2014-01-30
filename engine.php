@@ -13,7 +13,7 @@ foreach ($plists as $plist) {
   $c = file_get_contents($plist);
   if (strpos($c, 'LSUIPresentationMode') !== FALSE) continue;
   $c = preg_replace('/(plist.*?\n<dict>)/', "$0\n\t<key>LSUIPresentationMode</key>\n\t<integer>4</integer>", $c);
-  `chmod +w $plist`;
+  `chmod +w "$plist"`;
   file_put_contents($plist, $c);
 }
 
